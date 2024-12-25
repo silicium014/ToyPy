@@ -1,9 +1,22 @@
 def RepeaterGenerator(value, max_count):
     for _ in range(max_count):
         yield value
-        
-#print(dir(RepeaterGenerator))
-gen = RepeaterGenerator("Hello world!!!", 2)  
-print(dir(gen))    
+       
+gen = RepeaterGenerator("Hello world!!!", 2)   
 for _ in gen:
-    print(_)
+    try:
+        print(_)
+    except StopIteration:
+        break
+        
+gen2 = ("Hell'o world again" for _ in range(10) if _%2 == 0)
+for x in gen2:
+    print(x)
+
+for a in ("Hi Mike Tyson!" for b in range(5)):
+    print(a)
+    
+# variant of generator !!! warning it is can be used once
+
+some_gen = (i**2 for i in range(20))
+print(list(some_gen))
